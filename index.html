@@ -1,76 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Responsive Pure JavaScript Masonry Layout with Local Images</title>
-
-    <style>
-      /* ------------------------------ */
-      /* CSS */
-      /* ------------------------------ */
-
-      body {
-        margin: 0;
-
-        padding: 0;
-
-        font-family: sans-serif;
-
-        background-color: #f8f8f8;
-      }
-
-      #container {
-        position: relative;
-
-        width: 95%; /* Adjust container width */
-
-        margin: 20px auto;
-      }
-
-      .item {
-        position: absolute;
-
-        padding: 10px;
-
-        border: 1px solid #ddd;
-
-        box-sizing: border-box;
-
-        background-color: #fff;
-
-        transition: top 0.3s ease, left 0.3s ease; /* Add animation */
-
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
-        text-align: center;
-      }
-
-      .item img {
-        display: block; /* Remove space below the image */
-
-        width: 100%;
-
-        height: auto; /* Maintain aspect ratio */
-
-        margin-bottom: 10px;
-      }
-
-      .item p {
-        margin: 0;
-
-        padding: 0;
-
-        font-size: 0.9em;
-
-        color: #333;
-      }
-    </style>
+    <title>Responsive Pure JavaScript Masonry Layout</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-
   <body>
     <div id="container">
       <div class="item">
@@ -78,172 +13,58 @@
           src="https://images.unsplash.com/photo-1648474394307-161b89b4d1d6?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Digital Watch"
         />
-
         <p>Digital Watch - Modern design that keeps time</p>
       </div>
-
       <div class="item">
-        <img src="images/mobile-app.jpg" alt="Mobile App" />
-
+        <img
+          src="https://images.unsplash.com/flagged/photo-1581390476351-b5d89504a5cb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Mobile App"
+        />
         <p>Mobile App - Supports a smart lifestyle</p>
       </div>
-
       <div class="item">
         <img
           src="https://images.unsplash.com/photo-1711779321785-6d584ea238b5?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Sample Products"
         />
-
         <p>Sample Products - Bringing your ideas to life</p>
       </div>
-
       <div class="item">
         <img
           src="https://images.unsplash.com/photo-1648474394307-161b89b4d1d6?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Digital Watch"
         />
-
         <p>Digital Watch - Second-generation evolution</p>
       </div>
-
       <div class="item">
-        <img src="images/mobile-app.jpg" alt="Mobile App" />
-
+        <img
+          src="https://images.unsplash.com/flagged/photo-1581390476351-b5d89504a5cb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Mobile App"
+        />
         <p>Mobile App - Intuitive usability</p>
       </div>
-
       <div class="item">
         <img
           src="https://images.unsplash.com/photo-1711779321785-6d584ea238b5?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Sample Products"
         />
-
         <p>Sample Products - Designs that create the future</p>
       </div>
-
       <div class="item">
         <img
           src="https://images.unsplash.com/photo-1648474394307-161b89b4d1d6?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Digital Watch"
         />
-
         <p>Digital Watch - Perfect for sports</p>
       </div>
-
       <div class="item">
-        <img src="images/mobile-app.jpg" alt="Mobile App" />
-
+        <img
+          src="https://images.unsplash.com/flagged/photo-1581390476351-b5d89504a5cb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Mobile App"
+        />
         <p>Mobile App - Also great for business</p>
       </div>
     </div>
-
-    <script>
-      /* ------------------------------ */
-
-      /* JavaScript */
-
-      /* ------------------------------ */
-
-      const container = document.getElementById("container");
-
-      const items = document.querySelectorAll(".item");
-
-      const gutter = 20; // Gap between items
-
-      const layoutItems = () => {
-        // Dynamically change the number of columns based on screen width
-
-        const screenWidth = window.innerWidth;
-
-        let numColumns = 2; // Default to 2 columns
-
-        if (screenWidth > 1200) {
-          numColumns = 4; // 4 columns for large screens
-        } else if (screenWidth > 768) {
-          numColumns = 3; // 3 columns for tablets
-        } else if (screenWidth <= 480) {
-          numColumns = 1; // 1 column for mobile
-        }
-
-        // Initialize an array to manage the height of each column
-
-        const columnHeights = new Array(numColumns).fill(0);
-
-        // Calculate the width for each item
-
-        const containerWidth = container.offsetWidth;
-
-        const itemWidth =
-          (containerWidth - gutter * (numColumns - 1)) / numColumns;
-
-        // Position each item
-
-        items.forEach((item) => {
-          // Find the shortest column
-
-          const minHeight = Math.min(...columnHeights);
-
-          const minHeightIndex = columnHeights.indexOf(minHeight);
-
-          // Set the item's position
-
-          const top = minHeight;
-
-          const left = minHeightIndex * (itemWidth + gutter);
-
-          item.style.position = "absolute";
-
-          item.style.width = `${itemWidth}px`;
-
-          item.style.top = `${top}px`;
-
-          item.style.left = `${left}px`;
-
-          // Update the column height with the new item's height
-
-          // Important: This relies on the image being fully loaded to get the correct offsetHeight
-
-          columnHeights[minHeightIndex] += item.offsetHeight + gutter;
-        });
-
-        // After all items are positioned, set the container's height
-
-        const maxHeight = Math.max(...columnHeights);
-
-        container.style.height = `${maxHeight}px`;
-      };
-
-      // Create an array of Promises to wait for all images to load
-
-      const imageLoadPromises = Array.from(
-        document.querySelectorAll(".item img")
-      ).map((img) => {
-        return new Promise((resolve) => {
-          if (img.complete) {
-            // If image is already loaded, resolve immediately
-
-            resolve();
-          } else {
-            img.onload = resolve; // Wait for the image to load
-
-            img.onerror = resolve; // Resolve even if an error occurs to prevent layout from being blocked
-          }
-        });
-      });
-
-      // Run the layout function after all images have finished loading
-
-      Promise.all(imageLoadPromises).then(() => {
-        layoutItems();
-      });
-
-      // Re-run the layout on window resize
-
-      window.addEventListener("resize", () => {
-        // For resizing, we can update the layout immediately
-
-        layoutItems();
-      });
-    </script>
+    <script src="js/masonry.js"></script>
   </body>
 </html>
