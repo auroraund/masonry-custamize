@@ -32,3 +32,11 @@ It dynamically calculates item positioning after all images have fully loaded, d
 </div>
 
 <script src="js/masonry.js"></script>
+```
+
+---
+
+## About the Author
+
+Built by **auroraund** @ **nurohive**.
+[nurohive.com](https://nurohive.com)
